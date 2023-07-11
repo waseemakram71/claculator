@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [result, setReuslt] = useState('');
+  const [result, setReuslt] = useState(' ');
   const clickHandeler=(event)=>{
     setReuslt(result.concat(event.target.value))
   }
