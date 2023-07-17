@@ -13,12 +13,13 @@
   border: 3px solid black;
 }
 .button{
-  background: #323434;
+  background: #333;
   height: 80px;
   width: 80px;
-  color: white;
+  color: rgb(53, 176, 149);
   font-size: 30px;
   border: 1px solid black;
+  cursor: pointer;
 } 
 .button1{
   width: 106.6px;

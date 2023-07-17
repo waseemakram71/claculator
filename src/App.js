@@ -1,24 +1,40 @@
+
 import React, { useState } from 'react';
 import './App.css';
 
 function App() {
   const [result, setReuslt] = useState('');
-  const clickHandeler=(event)=>{
-    setReuslt(result.concat(event.target.value))
-  }
-  const clearDisplay=()=>{
+  const [operatorClicked, setOperatorClicked] = useState(false); // Track if operator is clicked
+
+  const clickHandeler = (event) => {
+    const value = event.target.value;
+    if (value === '+' || value === '-' || value === '*' || value === '/'|| value === '.'|| value === '%' ) {
+      if (operatorClicked) {
+        return; // Return early if operator is already clicked
+      }
+      setOperatorClicked(true);
+    }
+    setReuslt(result.concat(value));
+  };
+
+  const clearDisplay = () => {
     setReuslt('');
-  }
-  const calculate=()=>{
-    try{
-    setReuslt(eval(result).toString())
-  }catch(err){
-    setReuslt("error")
-  }
-  }
-  const backSpace=()=>{
-    setReuslt(result.slice(0, -1))
-  }   
+    setOperatorClicked(false);
+  };
+
+  const calculate = () => {
+    try {
+      setReuslt(eval(result).toString());
+      setOperatorClicked(false);
+    } catch (err) {
+      
+      setOperatorClicked(false);
+    }
+  };
+
+  const backSpace = () => {
+    setReuslt(result.slice(0, -1));
+  };
  
   return (
 <div className="calc">
